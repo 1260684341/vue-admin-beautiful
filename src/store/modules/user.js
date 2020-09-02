@@ -4,7 +4,7 @@
  */
 
 import Vue from "vue";
-import { getUserInfo, login, logout } from "@/api/user";
+import { getUserInfo, getUserPrivileges, login, logout } from "@/api/user";
 import {
   getAccessToken,
   removeAccessToken,
@@ -66,6 +66,28 @@ const actions = {
         `登录接口异常，未正确返回${tokenName}...`,
         "error"
       );
+    }
+
+    const obj_admin_user = data.obj_admin_user;
+    if (obj_admin_user) {
+      commit("setUsername", obj_admin_user.name);
+      commit("setAvatar", obj_admin_user.header_img);
+    }
+  },
+  async getUserPrivileges({ commit, state }) {
+    const { data } = await getUserPrivileges();
+    if (!data) {
+      Vue.prototype.$baseMessage("获取权限失败，请重新登录...", "error");
+      return false;
+    }
+    console.log(data);
+    let { permissions } = data;
+    if (permissions && Array.isArray(permissions)) {
+      commit("setPermissions", permissions);
+      return permissions;
+    } else {
+      Vue.prototype.$baseMessage("获取权限异常", "error");
+      return false;
     }
   },
   async getUserInfo({ commit, state }) {

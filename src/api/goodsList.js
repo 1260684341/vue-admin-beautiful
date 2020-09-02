@@ -2,7 +2,7 @@ import request from "@/utils/request";
 
 export function getList(data) {
   return request({
-    url: "/goodsList/getList",
+    url: "Product/list",
     method: "post",
     data,
   });

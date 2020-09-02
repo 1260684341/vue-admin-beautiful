@@ -69,50 +69,30 @@ export const asyncRoutes = [
       },
     ],
   },
-  /* {
-    path: "/test",
-    component: Layout,
-    redirect: "noRedirect",
-    children: [
-      {
-        path: "test",
-        name: "Test",
-        component: () => import("@/views/test/index"),
-        meta: {
-          title: "test",
-          icon: "marker",
-          permissions: ["admin"],
-        },
-      },
-    ],
-  }, */
   {
-    path: "/personnelManagement",
+    path: "/adminManagement",
     component: Layout,
     redirect: "noRedirect",
-    name: "PersonnelManagement",
+    name: "adminManagement",
     meta: { title: "配置", icon: "users-cog", permissions: ["admin"] },
     children: [
       {
         path: "userManagement",
         name: "UserManagement",
-        component: () =>
-          import("@/views/personnelManagement/userManagement/index"),
+        component: () => import("@/views/adminManagement/userManagement/index"),
         meta: { title: "用户管理" },
       },
       {
         path: "roleManagement",
         name: "RoleManagement",
-        component: () =>
-          import("@/views/personnelManagement/roleManagement/index"),
+        component: () => import("@/views/adminManagement/roleManagement/index"),
         meta: { title: "角色管理" },
       },
       {
         path: "menuManagement",
         name: "MenuManagement",
-        component: () =>
-          import("@/views/personnelManagement/menuManagement/index"),
-        meta: { title: "菜单管理", badge: "New" },
+        component: () => import("@/views/adminManagement/menuManagement/index"),
+        meta: { title: "菜单管理" },
       },
     ],
   },
@@ -407,34 +387,102 @@ export const asyncRoutes = [
     meta: {
       title: "商城",
       icon: "shopping-cart",
-      permissions: ["admin"],
+      permissions: ["admin", "mall"],
     },
-
     children: [
       {
-        path: "pay",
-        name: "Pay",
-        component: () => import("@/views/mall/pay/index"),
+        path: "productCategoryList",
+        name: "ProductCategoryList",
+        component: () => import("@/views/mall/productCategoryList/index"),
         meta: {
-          title: "支付",
-          noKeepAlive: true,
+          title: "分类管理",
         },
-        children: null,
       },
       {
-        path: "goodsList",
-        name: "GoodsList",
-        component: () => import("@/views/mall/goodsList/index"),
+        path: "productList",
+        name: "ProductList",
+        component: () => import("@/views/mall/productList/index"),
         meta: {
           title: "商品列表",
         },
       },
       {
-        path: "goodsDetail",
-        name: "GoodsDetail",
-        component: () => import("@/views/mall/goodsDetail/index"),
+        path: "bannerList",
+        name: "BannerList",
+        component: () => import("@/views/mall/bannerList/index"),
         meta: {
-          title: "商品详情",
+          title: "轮播列表",
+        },
+      },
+    ],
+  },
+  {
+    path: "/order",
+    component: Layout,
+    redirect: "noRedirect",
+    name: "order",
+    meta: {
+      title: "订单",
+      icon: "shopping-cart",
+      permissions: ["order"],
+    },
+    children: [
+      {
+        path: "waitingPayList",
+        name: "WaitingPayList",
+        component: () => import("@/views/project/order/waitingPayList/index"),
+        meta: {
+          title: "待支付订单",
+        },
+      },
+      {
+        path: "waitingSendList",
+        name: "WaitingSendList",
+        component: () => import("@/views/project/order/waitingSendList/index"),
+        meta: {
+          title: "待发货订单",
+        },
+      },
+      {
+        path: "waitingReceiveList",
+        name: "WaitingReceiveList",
+        component: () =>
+          import("@/views/project/order/waitingReceiveList/index"),
+        meta: {
+          title: "待收货订单",
+        },
+      },
+      {
+        path: "finishList",
+        name: "FinishList",
+        component: () => import("@/views/project/order/finishList/index"),
+        meta: {
+          title: "已完成订单",
+        },
+      },
+      {
+        path: "refundApplyList",
+        name: "RefundApplyList",
+        component: () => import("@/views/project/order/refundApplyList/index"),
+        meta: {
+          title: "申请退款订单",
+        },
+      },
+      {
+        path: "refundAgreeList",
+        name: "RefundAgreeList",
+        component: () => import("@/views/project/order/refundAgreeList/index"),
+        meta: {
+          title: "退款成功订单",
+        },
+      },
+      {
+        path: "refundDisagreeList",
+        name: "RefundDisagreeList",
+        component: () =>
+          import("@/views/project/order/refundDisagreeList/index"),
+        meta: {
+          title: "退款失败订单",
         },
       },
     ],
@@ -445,6 +493,7 @@ export const asyncRoutes = [
     redirect: "noRedirect",
     name: "Error",
     meta: { title: "错误页", icon: "bug" },
+    hidden: true,
     children: [
       {
         path: "401",

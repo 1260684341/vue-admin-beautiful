@@ -10,12 +10,12 @@ export function isExternal(path) {
 
 /**
  * @copyright chuzhixin 1204505056@qq.com
- * @description 校验密码是否小于6位
+ * @description 校验密码是否小于5位
  * @param str
  * @returns {boolean}
  */
 export function isPassword(str) {
-  return str.length >= 6;
+  return str.length >= 5;
 }
 
 /**

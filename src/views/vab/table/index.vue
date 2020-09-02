@@ -41,6 +41,7 @@
       ref="tableSort"
       v-loading="listLoading"
       :data="list"
+      max-height="500"
       :element-loading-text="elementLoadingText"
       @selection-change="setSelectRows"
       @sort-change="tableSortChange"
@@ -219,15 +220,11 @@
         this.fetchData();
       },
       async fetchData() {
+        console.log(1);
         this.listLoading = true;
         const { data, totalCount } = await getList(this.queryForm);
-        this.list = data;
-        const imageList = [];
-        data.forEach((item, index) => {
-          imageList.push(item.img);
-        });
-        this.imageList = imageList;
-        this.total = totalCount;
+        this.list = data.list;
+        this.total = data.total;
         setTimeout(() => {
           this.listLoading = false;
         }, 500);

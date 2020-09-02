@@ -7,12 +7,17 @@ export async function login(data) {
     data = await encryptedData(data);
   }
   return request({
-    url: "/login",
+    url: "/Auth/login",
     method: "post",
     data,
   });
 }
-
+export function getUserPrivileges() {
+  return request({
+    url: "/AdminUser/privileges",
+    method: "post",
+  });
+}
 export function getUserInfo(accessToken) {
   return request({
     url: "/userInfo",
@@ -25,7 +30,7 @@ export function getUserInfo(accessToken) {
 
 export function logout() {
   return request({
-    url: "/logout",
+    url: "/Auth/logout",
     method: "post",
   });
 }

@@ -45,7 +45,7 @@ const data = [
 ];
 module.exports = [
   {
-    url: "/tree/list",
+    url: "/Tree/list",
     type: "post",
     response() {
       return { code: 200, msg: "success", data };

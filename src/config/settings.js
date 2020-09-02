@@ -16,8 +16,8 @@ module.exports = {
   // 默认的接口地址 如果是开发环境和生产环境走vab-mock-server，当然你也可以选择自己配置成需要的接口地址
   baseURL:
     process.env.NODE_ENV === "development"
-      ? "vab-mock-server"
-      : "vab-mock-server",
+      ? "http://yixin.com/index.php/admin"
+      : "https://yixin.mipetec.comindex.php/admin",
   //标题 （包括初次加载雪花屏的标题 页面的标题 浏览器的标题）
   title: "vue-admin-beautiful",
   //简写
@@ -29,9 +29,9 @@ module.exports = {
   //烦请保留package.json作者信息 保留版权可免费商用 如需去除并自定义为自己企业的版权请联系群主QQ 1204505056 需支付299元 恶意修改发生纠纷及出现任何问题 由修改人自行承担
   copyright: process.env.VUE_APP_AUTHOR,
   //是否显示页面底部版权信息，建议您显示，当然您也可以选择不显示，不管您是付费用户还是未付费用户您都有选择显示或者不显示的权利
-  footerCopyright: process.env.NODE_ENV !== "development",
+  footerCopyright: false, //process.env.NODE_ENV !== "development",
   //是否显示右上角github图标
-  githubCorner: process.env.NODE_ENV !== "development",
+  githubCorner: false, //process.env.NODE_ENV !== "development",
   //是否显示顶部进度条
   progressBar: true,
   //缓存路由的最大数量
@@ -43,7 +43,7 @@ module.exports = {
   //加载时显示文字
   loadingText: "正在加载中...",
   //token名称
-  tokenName: "accessToken",
+  tokenName: "token",
   //token在localStorage、sessionStorage、cookie存储的key的名称
   tokenTableName: "vue-admin-beautiful",
   //token存储位置localStorage sessionStorage cookie
@@ -67,19 +67,19 @@ module.exports = {
   //消息框消失时间
   messageDuration: 3000,
   //最长请求时间
-  requestTimeout: 5000,
+  requestTimeout: 10000,
   //操作正常code，支持String、Array、int多种类型
-  successCode: [200, 0],
+  successCode: [0],
   //登录失效code
-  invalidCode: 402,
+  invalidCode: -600,
   //无权限code
-  noPermissionCode: 401,
+  noPermissionCode: -601,
   //是否显示在页面高亮错误
   errorLog: ["development", "test", "production"],
   //是否开启登录拦截
   loginInterception: true,
   //是否开启登录RSA加密
-  loginRSA: true,
+  loginRSA: false,
   //是否依据mock数据生成webstorm HTTP Request请求文件
   httpRequestFile: false,
   //intelligence和all两种方式，前者后端权限只控制permissions不控制view文件的import（前后端配合，减轻后端工作量），all方式完全交给后端前端只负责加载

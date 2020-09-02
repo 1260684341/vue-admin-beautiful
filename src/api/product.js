@@ -1,8 +1,8 @@
 import request from "@/utils/request";
 
-export function getList(data) {
+export function getProductList(data) {
   return request({
-    url: "/Ad/list",
+    url: "Product/list",
     method: "post",
     data,
   });
